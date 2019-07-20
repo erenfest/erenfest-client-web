@@ -23,12 +23,6 @@ html.disableScroll {
 
 html,
 input,
-button {
-  line-height: 1.4;
-}
-
-html,
-input,
 textarea,
 pre {
   font-family: 'Noto Sans KR', sans-serif;
@@ -91,5 +85,4 @@ input,
 textarea {
   outline: none;
   vertical-align: middle;
-  line-height: 1.4;
 }

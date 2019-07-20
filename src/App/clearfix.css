@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+
+  transition: none 0.3s ease-in-out;
+}
+
+html {
+  user-select: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  font-size: 16px;
+  color: hsl(0 16% 24%);
+}
+
+html.disableScroll {
+  position: fixed;
+}
+
+html,
+input,
+button {
+  line-height: 1.4;
+}
+
+html,
+input,
+textarea,
+pre {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+button,
+ol,
+ul,
+li,
+figure,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+
+  margin: 0 auto;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+a {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+button {
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  background-color: transparent;
+
+  font-size: inherit;
+}
+
+input::placeholder {
+  color: hsl(0 0% 64%);
+}
+
+input,
+textarea {
+  outline: none;
+  vertical-align: middle;
+  line-height: 1.4;
+}

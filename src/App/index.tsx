@@ -8,7 +8,7 @@ import { BaseTemplate } from './Templates'
 import { Pages } from './Pages'
 
 export const App: FC = () => (
-  <TranslationProvider host={config.translationHost}>
+  <TranslationProvider host={config.translationHost} language='ko'>
     <BaseTemplate>
       <BrowserRouter>
         <Pages />

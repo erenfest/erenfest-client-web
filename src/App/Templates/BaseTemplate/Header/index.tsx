@@ -13,18 +13,19 @@ const Layout = styled.div`
   width: 100%;
 
   text-transform: capitalize;
-  box-shadow: 0 0 1px 0 currentColor;
-`
+  box-shadow: 0 0 0 1px hsl(0 0% 84%);
+  background-color: white;
 
-const MaxWidth = styled.div`
-  display: grid;
-  align-items: center;
+  & > div {
+    display: grid;
+    align-items: center;
 
-  max-width: ${Size.MaxWidth}px;
-  width: 100%;
-  height: ${Size.HeaderHeight}px;
+    max-width: ${Size.MaxWidth}px;
+    width: 100%;
+    height: ${Size.HeaderHeight}px;
 
-  margin: 0 auto;
+    margin: 0 auto;
+  }
 `
 
 export const Header: FC = () => {
@@ -33,7 +34,7 @@ export const Header: FC = () => {
 
   return (
     <Layout>
-      <MaxWidth>{serviceName}</MaxWidth>
+      <div>{serviceName}</div>
     </Layout>
   )
 }

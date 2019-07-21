@@ -7,12 +7,13 @@ import { RoomList } from '../types'
 const Layout = styled.div`
   overflow-y: scroll;
 
-  display: grid;
-  grid-auto-rows: min-content;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 16px;
-
   height: 100%;
+`
+
+const RoomContainer = styled.div`
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
   padding: 16px;
 `
@@ -50,18 +51,20 @@ interface Props {
 
 export const Rooms: FC<Props> = ({ items }) => (
   <Layout>
-    {items.map(({ id, imageUrl, title }) => (
-      <Room to={`/room/${id}`} key={id}>
-        <Left>
-          <h4>{imageUrl}</h4>
-        </Left>
+    <RoomContainer>
+      {items.map(({ id, imageUrl, title }) => (
+        <Room to={`/room/${id}`} key={id}>
+          <Left>
+            <h4>{imageUrl}</h4>
+          </Left>
 
-        <Right>
-          <h4>
-            [{id}] {title}
-          </h4>
-        </Right>
-      </Room>
-    ))}
+          <Right>
+            <h4>
+              [{id}] {title}
+            </h4>
+          </Right>
+        </Room>
+      ))}
+    </RoomContainer>
   </Layout>
 )

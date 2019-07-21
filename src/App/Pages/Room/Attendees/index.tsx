@@ -2,8 +2,13 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 
 import { AttendeeList } from '../types'
+import { Ex } from '../../../Atomics/Icons'
 
-const Layout = styled.div``
+const Layout = styled.div`
+  overflow-y: scroll;
+
+  height: 100%;
+`
 
 const AttendeeContainer = styled.ul`
   display: grid;
@@ -15,7 +20,7 @@ const AttendeeContainer = styled.ul`
 
 const Attendee = styled.li`
   cursor: pointer;
-  overflow: hidden;
+  position: relative;
 
   display: grid;
   grid-template-columns: 96px 1fr;
@@ -43,6 +48,28 @@ const AttendeeInfo = styled.div`
   padding: 8px;
 `
 
+const FireButton = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+`
+
+const Icon = styled.div`
+  width: 24px;
+  height: 24px;
+
+  border-radius: 3px;
+
+  &:hover {
+    background-color: red;
+    box-shadow: 0 0 3px 0 red;
+
+    & > svg {
+      stroke: white;
+    }
+  }
+`
+
 interface Props {
   readonly items: AttendeeList
 }
@@ -59,6 +86,12 @@ export const Attendees: FC<Props> = ({ items }) => (
           <AttendeeInfo>
             <b>{nickname}</b>
           </AttendeeInfo>
+
+          <FireButton>
+            <Icon>
+              <Ex />
+            </Icon>
+          </FireButton>
         </Attendee>
       ))}
     </AttendeeContainer>

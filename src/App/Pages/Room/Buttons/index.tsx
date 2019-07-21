@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+
 import { NamedRoutes } from '../../../../constants'
 
 const Layout = styled.div`
@@ -13,8 +14,6 @@ const Layout = styled.div`
   height: 100%;
 
   padding: 16px;
-
-  box-shadow: 1px solid hsl(0 0% 84%);
 `
 
 const ButtonList = styled.div`

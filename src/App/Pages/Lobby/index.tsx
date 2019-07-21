@@ -16,9 +16,9 @@ const Layout = styled.div`
     display: grid;
     grid-gap: 16px;
     grid-template:
-      'buttons chatting' 64px
+      'buttons chatting' 72px
       'rooms chatting' calc(100vh - ${HEADER_HEIGHT}px - 16px * 9)
-      / 1fr ${Size.XS}px;
+      / calc(100% - ${Size.XS}px) 1fr;
 
     max-width: ${Size.LG}px;
     width: 100%;

@@ -39,5 +39,35 @@ export const roomList: RoomList = [
     id: 3,
     imageUrl: 'Image',
     title: '어서 오세요'
+  },
+  {
+    id: 4,
+    imageUrl: 'Image',
+    title: '어서 오세요'
+  },
+  {
+    id: 5,
+    imageUrl: 'Image',
+    title: '어서 오세요'
+  },
+  {
+    id: 6,
+    imageUrl: 'Image',
+    title: '어서 오세요'
+  },
+  {
+    id: 7,
+    imageUrl: 'Image',
+    title: '어서 오세요'
+  },
+  {
+    id: 8,
+    imageUrl: 'Image',
+    title: '어서 오세요'
+  },
+  {
+    id: 9,
+    imageUrl: 'Image',
+    title: '어서 오세요'
   }
 ]

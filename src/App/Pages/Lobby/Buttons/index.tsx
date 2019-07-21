@@ -4,14 +4,27 @@ import styled from 'styled-components'
 const Layout = styled.ul`
   overflow-x: scroll;
 
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: 1fr min-content;
+
   height: 100%;
 
   padding: 16px;
-
-  box-shadow: 1px solid hsl(0 0% 84%);
 `
 
-const Item = styled.li`
+const ButtonList = styled.div`
+  display: grid;
+  grid-gap: 16px;
+  grid-auto-columns: min-content;
+  grid-auto-flow: column;
+`
+
+const LeftButtonList = ButtonList
+
+const RightButtonList = ButtonList
+
+const Item = styled.div`
   cursor: pointer;
 
   width: min-content;
@@ -30,6 +43,10 @@ const Item = styled.li`
 
 export const Buttons: FC = () => (
   <Layout>
-    <Item>방 만들기</Item>
+    <LeftButtonList>
+      <Item>방 만들기</Item>
+    </LeftButtonList>
+
+    <RightButtonList />
   </Layout>
 )

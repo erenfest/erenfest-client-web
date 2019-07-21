@@ -1,7 +1,7 @@
 import React, { FC, Fragment } from 'react'
 import styled from 'styled-components'
 
-import { HEADER_HEIGHT } from '../../../Templates/BaseTemplate/constants'
+import { HEADER_HEIGHT } from '../../Templates/BaseTemplate/constants'
 
 const Layout = styled.div`
   display: grid;

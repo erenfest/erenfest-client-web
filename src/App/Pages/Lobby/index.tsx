@@ -2,8 +2,8 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 
 import { Size } from '../../../constants'
+import { Chatting } from '../../Components'
 import { Rooms } from './Rooms'
-import { Chatting } from './Chatting'
 
 const Layout = styled.div`
   margin-top: 32px;

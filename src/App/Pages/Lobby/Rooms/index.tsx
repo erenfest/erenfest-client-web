@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { NamedRoutes } from '../../../../constants'
+import { RoomList } from '../types'
 
 const Layout = styled.div`
   overflow-y: scroll;
@@ -44,16 +44,22 @@ const Right = styled.div`
   padding: 8px;
 `
 
-export const Rooms: FC = () => (
+interface Props {
+  readonly items: RoomList
+}
+
+export const Rooms: FC<Props> = ({ items }) => (
   <Layout>
-    {Array.from({ length: 21 }, (_, index) => (
-      <Room to={NamedRoutes.Room} key={index}>
+    {items.map(({ id, imageUrl, title }) => (
+      <Room to={`/room/${id}`} key={id}>
         <Left>
-          <h4>Image</h4>
+          <h4>{imageUrl}</h4>
         </Left>
 
         <Right>
-          <h4>[{index}] 어서 오세요</h4>
+          <h4>
+            [{id}] {title}
+          </h4>
         </Right>
       </Room>
     ))}

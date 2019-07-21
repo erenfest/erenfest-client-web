@@ -3,9 +3,10 @@ import styled from 'styled-components'
 
 import { Size } from '../../../constants'
 import { Chatting } from '../../Components'
+import { HEADER_HEIGHT } from '../../Templates/BaseTemplate/constants'
 import { Rooms } from './Rooms'
 import { Buttons } from './Buttons'
-import { HEADER_HEIGHT } from '../../Templates/BaseTemplate/constants'
+import { useLobby } from './useLobby'
 
 const Layout = styled.div`
   margin-top: 32px;
@@ -26,20 +27,24 @@ const Layout = styled.div`
   }
 `
 
-export const Lobby: FC = () => (
-  <Layout>
-    <div>
-      <div style={{ gridArea: 'buttons' }}>
-        <Buttons />
-      </div>
+export const Lobby: FC = () => {
+  const [state] = useLobby()
 
-      <div style={{ gridArea: 'rooms' }}>
-        <Rooms />
-      </div>
+  return (
+    <Layout>
+      <div>
+        <div style={{ gridArea: 'buttons' }}>
+          <Buttons />
+        </div>
 
-      <div style={{ gridArea: 'chatting', marginTop: '16px' }}>
-        <Chatting />
+        <div style={{ gridArea: 'rooms' }}>
+          <Rooms items={state.roomList} />
+        </div>
+
+        <div style={{ gridArea: 'chatting', marginTop: '16px' }}>
+          <Chatting items={state.chatting} />
+        </div>
       </div>
-    </div>
-  </Layout>
-)
+    </Layout>
+  )
+}

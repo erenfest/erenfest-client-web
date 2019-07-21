@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 
 import { HEADER_HEIGHT } from '../../Templates/BaseTemplate/constants'
@@ -46,23 +46,30 @@ const Button = styled.button`
   }
 `
 
-export const Chatting: FC = () => (
+export type Chat = Readonly<{
+  id: number
+  message: string
+  user: {
+    id: number
+    nickname: string
+  }
+}>
+
+export type ChatList = readonly Chat[]
+
+interface Props {
+  readonly items: readonly Chat[]
+}
+
+export const Chatting: FC<Props> = ({ items }) => (
   <Layout>
     <ChatList>
-      {Array.from({ length: 21 }, (_, index) => (
-        <Fragment key={index}>
-          <Chat>
-            <b>Danuel</b>
-            <span>: </span>
-            <span>Lorem Ipsum 시러요</span>
-          </Chat>
-
-          <Chat>
-            <b>Danuel</b>
-            <span>: </span>
-            <span>ㅇㅈ합니까</span>
-          </Chat>
-        </Fragment>
+      {items.map(({ id, message, user }) => (
+        <Chat key={id}>
+          <b>{user.nickname}</b>
+          <span>: </span>
+          <span>{message}</span>
+        </Chat>
       ))}
     </ChatList>
 

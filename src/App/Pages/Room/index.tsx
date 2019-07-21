@@ -3,16 +3,22 @@ import styled from 'styled-components'
 
 import { Size } from '../../../constants'
 import { Chatting } from '../../Components'
+import { HEADER_HEIGHT } from '../../Templates/BaseTemplate/constants'
+import { Buttons } from './Buttons'
 import { Attendees } from './Attendees'
+import { useRoom } from './useRoom'
 
 const Layout = styled.div`
   margin-top: 32px;
-  padding: 0 16px;
+  padding-right: 16px;
 
   & > div {
     display: grid;
     grid-gap: 16px;
-    grid-template-columns: 1fr ${Size.XS}px;
+    grid-template:
+      'buttons chatting' 64px
+      'attendees chatting' calc(100vh - ${HEADER_HEIGHT}px - 16px * 9)
+      / 1fr ${Size.XS}px;
 
     max-width: ${Size.LG}px;
     width: 100%;
@@ -21,11 +27,24 @@ const Layout = styled.div`
   }
 `
 
-export const Room: FC = () => (
-  <Layout>
-    <div>
-      <Attendees />
-      <Chatting />
-    </div>
-  </Layout>
-)
+export const Room: FC = () => {
+  const [state] = useRoom()
+
+  return (
+    <Layout>
+      <div>
+        <div style={{ gridArea: 'buttons' }}>
+          <Buttons />
+        </div>
+
+        <div style={{ gridArea: 'attendees' }}>
+          <Attendees items={state.attendeeList} />
+        </div>
+
+        <div style={{ gridArea: 'chatting', marginTop: '16px' }}>
+          <Chatting items={state.chatting} />
+        </div>
+      </div>
+    </Layout>
+  )
+}

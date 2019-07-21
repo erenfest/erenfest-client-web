@@ -31,7 +31,7 @@ const StartButton = styled(Link)`
     margin: 0 auto;
     padding: 16px 32px;
 
-    color: hsl(0 0% 100% / 84%);
+    color: white;
     text-align: center;
     font-size: 20px;
     white-space: nowrap;

@@ -14,6 +14,7 @@ const Layout = styled.div`
 const CatchPhrase = styled.h2`
   margin-top: 20vh;
 
+  word-break: keep-all;
   font-size: 32px;
   text-align: center;
 `
@@ -25,15 +26,15 @@ const StartButton = styled.div`
   margin: 32px auto 0 auto;
   padding: 16px 32px;
 
+  color: white;
   font-size: 20px;
   white-space: nowrap;
-  background-color: white;
+  background-color: hsl(0 16% 24%);
   border-radius: 3px;
   box-shadow: 1px 1px 3px 1px hsl(0 0% 84%);
 
   &:hover {
-    color: white;
-    background-color: hsl(0 16% 24%);
+    transform: translateY(1px);
   }
 `
 

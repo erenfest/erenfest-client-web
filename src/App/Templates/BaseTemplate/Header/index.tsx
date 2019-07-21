@@ -34,7 +34,9 @@ export const Header: FC = () => {
 
   return (
     <Layout>
-      <div>{serviceName}</div>
+      <div>
+        <h2>{serviceName}</h2>
+      </div>
     </Layout>
   )
 }

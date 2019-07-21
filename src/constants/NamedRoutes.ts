@@ -3,6 +3,9 @@ export enum NamedRoutes {
   NotFound = '/not-found',
   Lobby = '/lobby',
 
+  Room = '/room/:id',
+  Room_NotFound = '/room/not-found',
+
   Home = Root,
   Error = NotFound
 }

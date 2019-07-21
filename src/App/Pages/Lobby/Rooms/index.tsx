@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { NamedRoutes } from '../../../../constants'
 import { HEADER_HEIGHT } from '../../../Templates/BaseTemplate/constants'
 
 const Layout = styled.div`
@@ -16,8 +18,7 @@ const Layout = styled.div`
   border-radius: 3px;
 `
 
-const Room = styled.div`
-  cursor: pointer;
+const Room = styled(Link)`
   overflow: hidden;
 
   display: grid;
@@ -47,7 +48,7 @@ const Right = styled.div`
 export const Rooms: FC = () => (
   <Layout>
     {Array.from({ length: 21 }, (_, index) => (
-      <Room key={index}>
+      <Room to={NamedRoutes.Room} key={index}>
         <Left>
           <h4>Image</h4>
         </Left>

@@ -12,6 +12,8 @@ const Layout = styled.div`
 
   width: 100%;
 
+  padding: 0 16px;
+
   text-transform: capitalize;
   box-shadow: 0 0 0 1px hsl(0 0% 84%);
   background-color: white;

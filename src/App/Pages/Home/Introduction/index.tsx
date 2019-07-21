@@ -1,8 +1,9 @@
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useTranslation } from 'use-translation'
 
-import { Size, I18N } from '../../../../constants'
+import { Size, I18N, NamedRoutes } from '../../../../constants'
 
 const Layout = styled.div`
   max-width: ${Size.MaxWidth}px;
@@ -19,22 +20,28 @@ const CatchPhrase = styled.h2`
   text-align: center;
 `
 
-const StartButton = styled.div`
-  cursor: pointer;
-  width: min-content;
+const StartButton = styled(Link)`
+  width: 100%;
 
-  margin: 32px auto 0 auto;
-  padding: 16px 32px;
+  margin-top: 32px;
 
-  color: white;
-  font-size: 20px;
-  white-space: nowrap;
-  background-color: hsl(0 16% 24%);
-  border-radius: 3px;
-  box-shadow: 1px 1px 3px 1px hsl(0 0% 84%);
+  h3 {
+    width: min-content;
 
-  &:hover {
-    transform: translateY(1px);
+    margin: 0 auto;
+    padding: 16px 32px;
+
+    color: hsl(0 0% 100% / 84%);
+    text-align: center;
+    font-size: 20px;
+    white-space: nowrap;
+    background-color: hsl(0 16% 24%);
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px 1px hsl(0 0% 84%);
+
+    &:hover {
+      transform: translateY(1px);
+    }
   }
 `
 
@@ -46,7 +53,10 @@ export const Introduction: FC = () => {
   return (
     <Layout>
       <CatchPhrase>{catchPhrase}</CatchPhrase>
-      <StartButton role='button'>{start}</StartButton>
+
+      <StartButton to={NamedRoutes.Lobby} role='button'>
+        <h3>{start}</h3>
+      </StartButton>
     </Layout>
   )
 }

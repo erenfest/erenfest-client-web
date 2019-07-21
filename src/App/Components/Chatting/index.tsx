@@ -8,7 +8,7 @@ const Layout = styled.div`
   grid-template-rows: 1fr 40px;
 
   width: 100%;
-  height: calc(100vh - ${HEADER_HEIGHT}px - 16px * 4);
+  height: calc(100vh - ${HEADER_HEIGHT}px - 16px * 5);
 
   border-radius: 3px;
 `

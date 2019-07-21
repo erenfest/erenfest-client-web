@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { NamedRoutes } from '../../../../constants'
-import { HEADER_HEIGHT } from '../../../Templates/BaseTemplate/constants'
 
 const Layout = styled.div`
   overflow-y: scroll;
@@ -13,9 +12,9 @@ const Layout = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 16px;
 
-  height: calc(100vh - ${HEADER_HEIGHT}px - 16px * 4);
+  height: 100%;
 
-  border-radius: 3px;
+  padding: 16px;
 `
 
 const Room = styled(Link)`

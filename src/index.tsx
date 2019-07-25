@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom'
 import { App } from './App'
 import * as serviceWorker from './serviceWorker'
 
-declare var Root: HTMLDivElement
+declare var AppRoot: HTMLDivElement
 
-ReactDOM.render(<App />, Root)
+ReactDOM.render(<App />, AppRoot)
 
 serviceWorker.unregister()

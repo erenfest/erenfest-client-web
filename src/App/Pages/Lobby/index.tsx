@@ -8,25 +8,6 @@ import { Rooms } from './Rooms'
 import { Buttons } from './Buttons'
 import { useLobby } from './useLobby'
 
-const Layout = styled.div`
-  margin-top: 32px;
-  padding-right: 16px;
-
-  & > div {
-    display: grid;
-    grid-gap: 16px;
-    grid-template:
-      'buttons chatting' 72px
-      'rooms chatting' calc(100vh - ${HEADER_HEIGHT}px - 16px * 9)
-      / calc(100% - ${Size.XS}px) 1fr;
-
-    max-width: ${Size.LG}px;
-    width: 100%;
-
-    margin: 0 auto;
-  }
-`
-
 export const Lobby: FC = () => {
   const [state] = useLobby()
 
@@ -48,3 +29,22 @@ export const Lobby: FC = () => {
     </Layout>
   )
 }
+
+const Layout = styled.div`
+  margin-top: 32px;
+  padding-right: 16px;
+
+  & > div {
+    display: grid;
+    grid-gap: 16px;
+    grid-template:
+      'buttons chatting' 72px
+      'rooms chatting' calc(100vh - ${HEADER_HEIGHT}px - 16px * 9)
+      / calc(100% - ${Size.XS}px) 1fr;
+
+    max-width: ${Size.LG}px;
+    width: 100%;
+
+    margin: 0 auto;
+  }
+`

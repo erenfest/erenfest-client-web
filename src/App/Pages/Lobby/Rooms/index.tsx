@@ -4,6 +4,30 @@ import styled from 'styled-components'
 
 import { RoomList } from '../types'
 
+interface Props {
+  readonly items: RoomList
+}
+
+export const Rooms: FC<Props> = ({ items }) => (
+  <Layout>
+    <RoomContainer>
+      {items.map(({ id, imageUrl, title }) => (
+        <Room to={`/room/${id}`} key={id}>
+          <Left>
+            <h4>{imageUrl}</h4>
+          </Left>
+
+          <Right>
+            <h4>
+              [{id}] {title}
+            </h4>
+          </Right>
+        </Room>
+      ))}
+    </RoomContainer>
+  </Layout>
+)
+
 const Layout = styled.div`
   overflow-y: scroll;
 
@@ -44,27 +68,3 @@ const Left = styled.div`
 const Right = styled.div`
   padding: 8px;
 `
-
-interface Props {
-  readonly items: RoomList
-}
-
-export const Rooms: FC<Props> = ({ items }) => (
-  <Layout>
-    <RoomContainer>
-      {items.map(({ id, imageUrl, title }) => (
-        <Room to={`/room/${id}`} key={id}>
-          <Left>
-            <h4>{imageUrl}</h4>
-          </Left>
-
-          <Right>
-            <h4>
-              [{id}] {title}
-            </h4>
-          </Right>
-        </Room>
-      ))}
-    </RoomContainer>
-  </Layout>
-)

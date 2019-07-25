@@ -4,6 +4,19 @@ import { useTranslation } from 'use-translation'
 
 import { Size, I18N } from '../../../../constants'
 
+export const Header: FC = () => {
+  const { t } = useTranslation()
+  const serviceName = t(I18N.App_Index, 'ServiceName', 'Erenfest')
+
+  return (
+    <Layout>
+      <div>
+        <h2>{serviceName}</h2>
+      </div>
+    </Layout>
+  )
+}
+
 const Layout = styled.div`
   position: fixed;
   top: 0;
@@ -29,16 +42,3 @@ const Layout = styled.div`
     margin: 0 auto;
   }
 `
-
-export const Header: FC = () => {
-  const { t } = useTranslation()
-  const serviceName = t(I18N.App_Index, 'ServiceName', 'Erenfest')
-
-  return (
-    <Layout>
-      <div>
-        <h2>{serviceName}</h2>
-      </div>
-    </Layout>
-  )
-}

@@ -1,8 +1,36 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-import { AttendeeList } from '../types'
 import { Ex } from '../../../Atomics/Icons'
+import { AttendeeList } from '../types'
+
+interface Props {
+  readonly items: AttendeeList
+}
+
+export const Attendees: FC<Props> = ({ items }) => (
+  <Layout>
+    <AttendeeContainer>
+      {items.map(({ id, imageUrl, nickname }, index) => (
+        <Attendee key={id}>
+          <Avatar>
+            <b>{imageUrl}</b>
+          </Avatar>
+
+          <AttendeeInfo>
+            <b>{nickname}</b>
+          </AttendeeInfo>
+
+          <FireButton>
+            <Icon>
+              <Ex />
+            </Icon>
+          </FireButton>
+        </Attendee>
+      ))}
+    </AttendeeContainer>
+  </Layout>
+)
 
 const Layout = styled.div`
   overflow-y: scroll;
@@ -69,31 +97,3 @@ const Icon = styled.div`
     }
   }
 `
-
-interface Props {
-  readonly items: AttendeeList
-}
-
-export const Attendees: FC<Props> = ({ items }) => (
-  <Layout>
-    <AttendeeContainer>
-      {items.map(({ id, imageUrl, nickname }, index) => (
-        <Attendee key={id}>
-          <Avatar>
-            <b>{imageUrl}</b>
-          </Avatar>
-
-          <AttendeeInfo>
-            <b>{nickname}</b>
-          </AttendeeInfo>
-
-          <FireButton>
-            <Icon>
-              <Ex />
-            </Icon>
-          </FireButton>
-        </Attendee>
-      ))}
-    </AttendeeContainer>
-  </Layout>
-)

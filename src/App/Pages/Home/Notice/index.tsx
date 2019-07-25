@@ -4,44 +4,6 @@ import { useTranslation } from 'use-translation'
 
 import { I18N, Size } from '../../../../constants'
 
-const Layout = styled.div`
-  max-width: ${Size.MD}px;
-  width: 100%;
-
-  margin: 0 auto;
-`
-
-const Heading = styled.h2`
-  padding: 8px 16px;
-`
-
-const NoticeList = styled.ul`
-  display: grid;
-  grid-gap: 8px;
-`
-
-const Title = styled.h4`
-  cursor: pointer;
-
-  padding: 16px 24px;
-
-  background-color: white;
-  border-radius: 3px;
-  box-shadow: 0 0 0 1px hsl(0 0% 84%);
-
-  &:hover {
-    transform: translateY(1px);
-  }
-`
-
-const Text = styled.div`
-  padding: 8px 0;
-
-  p {
-    margin: 16px;
-  }
-`
-
 export const Notice: FC = () => {
   const { t } = useTranslation()
   const notice = t(I18N.App_Index, 'Notice')
@@ -99,3 +61,41 @@ export const Notice: FC = () => {
     </Layout>
   )
 }
+
+const Layout = styled.div`
+  max-width: ${Size.MD}px;
+  width: 100%;
+
+  margin: 0 auto;
+`
+
+const Heading = styled.h2`
+  padding: 8px 16px;
+`
+
+const NoticeList = styled.ul`
+  display: grid;
+  grid-gap: 8px;
+`
+
+const Title = styled.h4`
+  cursor: pointer;
+
+  padding: 16px 24px;
+
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px hsl(0 0% 84%);
+
+  &:hover {
+    transform: translateY(1px);
+  }
+`
+
+const Text = styled.div`
+  padding: 8px 0;
+
+  p {
+    margin: 16px;
+  }
+`

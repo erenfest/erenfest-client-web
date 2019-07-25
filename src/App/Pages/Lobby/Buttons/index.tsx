@@ -1,6 +1,16 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
+export const Buttons: FC = () => (
+  <Layout>
+    <LeftButtonList>
+      <Item>방 만들기</Item>
+    </LeftButtonList>
+
+    <RightButtonList />
+  </Layout>
+)
+
 const Layout = styled.ul`
   overflow-x: scroll;
 
@@ -40,13 +50,3 @@ const Item = styled.div`
     box-shadow: 0 0 12px 0 hsl(0 0% 84%);
   }
 `
-
-export const Buttons: FC = () => (
-  <Layout>
-    <LeftButtonList>
-      <Item>방 만들기</Item>
-    </LeftButtonList>
-
-    <RightButtonList />
-  </Layout>
-)

@@ -5,6 +5,22 @@ import { useTranslation } from 'use-translation'
 
 import { Size, I18N, NamedRoutes } from '../../../../constants'
 
+export const Introduction: FC = () => {
+  const { t } = useTranslation()
+  const catchPhrase = t(I18N.App_Index, 'CatchPhrase')
+  const start = t(I18N.App_Index, 'Start')
+
+  return (
+    <Layout>
+      <CatchPhrase>{catchPhrase}</CatchPhrase>
+
+      <StartButton to={NamedRoutes.Lobby} role='button'>
+        <h3>{start}</h3>
+      </StartButton>
+    </Layout>
+  )
+}
+
 const Layout = styled.div`
   max-width: ${Size.MaxWidth}px;
   width: 100%;
@@ -44,19 +60,3 @@ const StartButton = styled(Link)`
     }
   }
 `
-
-export const Introduction: FC = () => {
-  const { t } = useTranslation()
-  const catchPhrase = t(I18N.App_Index, 'CatchPhrase')
-  const start = t(I18N.App_Index, 'Start')
-
-  return (
-    <Layout>
-      <CatchPhrase>{catchPhrase}</CatchPhrase>
-
-      <StartButton to={NamedRoutes.Lobby} role='button'>
-        <h3>{start}</h3>
-      </StartButton>
-    </Layout>
-  )
-}

@@ -2,6 +2,45 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 
 import { HEADER_HEIGHT } from '../../Templates/BaseTemplate/constants'
+import { useSelector } from '../../Store'
+
+export type Chat = Readonly<{
+  id: number
+  message: string
+  user: {
+    id: number
+    nickname: string
+  }
+}>
+
+export type ChatList = readonly Chat[]
+
+interface Props {
+  readonly items: readonly Chat[]
+}
+
+export const Chatting: FC<Props> = ({ items }) => {
+  const tabIndex = useSelector(store => store.Modal.tabIndex)
+
+  return (
+    <Layout>
+      <ChatList>
+        {items.map(({ id, message, user }) => (
+          <Chat key={id}>
+            <b>{user.nickname}</b>
+            <span>: </span>
+            <span>{message}</span>
+          </Chat>
+        ))}
+      </ChatList>
+
+      <InputContainer>
+        <InputText type='text' tabIndex={tabIndex} spellCheck={false} />
+        <Button tabIndex={tabIndex} />
+      </InputContainer>
+    </Layout>
+  )
+}
 
 const Layout = styled.div`
   display: grid;
@@ -46,37 +85,3 @@ const Button = styled.button`
     background-color: hsl(210 100% 92%);
   }
 `
-
-export type Chat = Readonly<{
-  id: number
-  message: string
-  user: {
-    id: number
-    nickname: string
-  }
-}>
-
-export type ChatList = readonly Chat[]
-
-interface Props {
-  readonly items: readonly Chat[]
-}
-
-export const Chatting: FC<Props> = ({ items }) => (
-  <Layout>
-    <ChatList>
-      {items.map(({ id, message, user }) => (
-        <Chat key={id}>
-          <b>{user.nickname}</b>
-          <span>: </span>
-          <span>{message}</span>
-        </Chat>
-      ))}
-    </ChatList>
-
-    <InputContainer>
-      <InputText type='text' spellCheck={false} />
-      <Button />
-    </InputContainer>
-  </Layout>
-)

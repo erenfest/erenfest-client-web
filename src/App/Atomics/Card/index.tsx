@@ -24,8 +24,13 @@ const Layout = styled.div`
   border: 1px solid hsl(0 16% 84%);
   border-radius: 3px;
 
-  &:hover {
+  &:hover,
+  &:focus {
     box-shadow: 0 0 12px 0 hsl(0 16% 84%);
+  }
+
+  &:active {
+    transform: translateY(1px);
   }
 `
 

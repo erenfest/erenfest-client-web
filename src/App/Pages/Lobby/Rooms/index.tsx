@@ -17,7 +17,7 @@ export const Rooms: FC<Props> = ({ items }) => {
     <Layout>
       <RoomContainer>
         {items.map(({ id, imageUrl, title }) => (
-          <Link to={`/room/${id}`} tabIndex={tabIndex} key={id}>
+          <Link to={`/room/${id}`} replace={true} tabIndex={tabIndex} key={id}>
             <Room>
               <Left>
                 <h4>{imageUrl}</h4>

@@ -23,7 +23,7 @@ export const Buttons: FC = () => {
       </LeftButtonList>
 
       <RightButtonList>
-        <Link to={NamedRoutes.Lobby} tabIndex={tabIndex}>
+        <Link to={NamedRoutes.Lobby} replace={true} tabIndex={tabIndex}>
           <Button>방 나가기</Button>
         </Link>
       </RightButtonList>

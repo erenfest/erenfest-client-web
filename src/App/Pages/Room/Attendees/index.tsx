@@ -18,7 +18,7 @@ export const Attendees: FC<Props> = ({ items }) => {
     <Layout>
       <AttendeeContainer>
         {items.map(({ id, imageUrl, nickname }, index) => (
-          <Link to='' tabIndex={tabIndex} key={id}>
+          <Link to='#' tabIndex={tabIndex} key={id}>
             <Attendee>
               <Avatar>
                 <b>{imageUrl}</b>

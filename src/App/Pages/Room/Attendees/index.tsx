@@ -1,36 +1,45 @@
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { Ex } from '../../../Atomics/Icons'
+import { Card } from '../../../Atomics'
+import { useSelector } from '../../../Store'
 import { AttendeeList } from '../types'
 
 interface Props {
   readonly items: AttendeeList
 }
 
-export const Attendees: FC<Props> = ({ items }) => (
-  <Layout>
-    <AttendeeContainer>
-      {items.map(({ id, imageUrl, nickname }, index) => (
-        <Attendee key={id}>
-          <Avatar>
-            <b>{imageUrl}</b>
-          </Avatar>
+export const Attendees: FC<Props> = ({ items }) => {
+  const tabIndex = useSelector(store => store.Modal.tabIndex)
 
-          <AttendeeInfo>
-            <b>{nickname}</b>
-          </AttendeeInfo>
+  return (
+    <Layout>
+      <AttendeeContainer>
+        {items.map(({ id, imageUrl, nickname }, index) => (
+          <Link to='' tabIndex={tabIndex} key={id}>
+            <Attendee>
+              <Avatar>
+                <b>{imageUrl}</b>
+              </Avatar>
 
-          <FireButton>
-            <Icon>
-              <Ex />
-            </Icon>
-          </FireButton>
-        </Attendee>
-      ))}
-    </AttendeeContainer>
-  </Layout>
-)
+              <AttendeeInfo>
+                <b>{nickname}</b>
+              </AttendeeInfo>
+
+              <FireButton>
+                <Icon>
+                  <Ex />
+                </Icon>
+              </FireButton>
+            </Attendee>
+          </Link>
+        ))}
+      </AttendeeContainer>
+    </Layout>
+  )
+}
 
 const Layout = styled.div`
   overflow-y: scroll;
@@ -38,7 +47,7 @@ const Layout = styled.div`
   height: 100%;
 `
 
-const AttendeeContainer = styled.ul`
+const AttendeeContainer = styled.div`
   display: grid;
   grid-gap: 16px;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -46,25 +55,15 @@ const AttendeeContainer = styled.ul`
   padding: 16px;
 `
 
-const Attendee = styled.li`
-  cursor: pointer;
+const Attendee = styled(Card)`
   position: relative;
 
-  display: grid;
   grid-template-columns: 96px 1fr;
 
   height: 96px;
-
-  background-color: white;
-  border: 1px solid hsl(0 16% 84%);
-  border-radius: 3px;
-
-  &:hover {
-    box-shadow: 0 0 12px 0 hsl(0 16% 84%);
-  }
 `
 
-const Avatar = styled.div`
+const Avatar = styled(Card.Left)`
   display: grid;
   justify-content: center;
   align-items: center;
@@ -72,7 +71,7 @@ const Avatar = styled.div`
   height: 96px;
 `
 
-const AttendeeInfo = styled.div`
+const AttendeeInfo = styled(Card.Right)`
   padding: 8px;
 `
 

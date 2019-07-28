@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { useSelector } from '../../../Store'
+import { Card } from '../../../Atomics'
 import { RoomList } from '../types'
 
 interface Props {
@@ -16,17 +17,19 @@ export const Rooms: FC<Props> = ({ items }) => {
     <Layout>
       <RoomContainer>
         {items.map(({ id, imageUrl, title }) => (
-          <Room to={`/room/${id}`} tabIndex={tabIndex} key={id}>
-            <Left>
-              <h4>{imageUrl}</h4>
-            </Left>
+          <Link to={`/room/${id}`} tabIndex={tabIndex} key={id}>
+            <Room>
+              <Left>
+                <h4>{imageUrl}</h4>
+              </Left>
 
-            <Right>
-              <h4>
-                [{id}] {title}
-              </h4>
-            </Right>
-          </Room>
+              <Right>
+                <h4>
+                  [{id}] {title}
+                </h4>
+              </Right>
+            </Room>
+          </Link>
         ))}
       </RoomContainer>
     </Layout>
@@ -47,29 +50,18 @@ const RoomContainer = styled.div`
   padding: 16px;
 `
 
-const Room = styled(Link)`
-  overflow: hidden;
-
-  display: grid;
+const Room = styled(Card)`
   grid-template-columns: 96px 1fr;
 
   height: 96px;
-
-  background-color: white;
-  border: 1px solid hsl(0 16% 84%);
-  border-radius: 3px;
-
-  &:hover {
-    box-shadow: 0 0 12px 0 hsl(0 16% 84%);
-  }
 `
 
-const Left = styled.div`
+const Left = styled(Card.Left)`
   display: grid;
   justify-content: center;
   align-items: center;
 `
 
-const Right = styled.div`
+const Right = styled(Card.Right)`
   padding: 8px;
 `

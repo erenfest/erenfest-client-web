@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { HEADER_HEIGHT } from '../../Templates/BaseTemplate/constants'
 import { useSelector } from '../../Store'
+import { Card } from '../../Atomics'
 
 export type Chat = Readonly<{
   id: number
@@ -60,13 +61,8 @@ const Chat = styled.li`
   margin: 8px;
 `
 
-const InputContainer = styled.div`
-  display: grid;
+const InputContainer = styled(Card)`
   grid-template-columns: 1fr 40px;
-
-  background-color: white;
-  border: 1px solid hsl(0 16% 84%);
-  border-radius: 3px;
 `
 
 const InputText = styled.input`

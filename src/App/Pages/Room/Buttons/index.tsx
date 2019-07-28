@@ -3,22 +3,33 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { NamedRoutes } from '../../../../constants'
+import { useSelector } from '../../../Store'
 
-export const Buttons: FC = () => (
-  <Layout>
-    <LeftButtonList>
-      <Item>방 설정</Item>
-      <Item>게임 준비</Item>
-      <Item>게임 시작</Item>
-    </LeftButtonList>
+export const Buttons: FC = () => {
+  const tabIndex = useSelector(store => store.Modal.tabIndex)
 
-    <RightButtonList>
-      <Link to={NamedRoutes.Lobby}>
-        <Item>방 나가기</Item>
-      </Link>
-    </RightButtonList>
-  </Layout>
-)
+  return (
+    <Layout>
+      <LeftButtonList>
+        <Button role='button' tabIndex={tabIndex}>
+          방 설정
+        </Button>
+        <Button role='button' tabIndex={tabIndex}>
+          게임 준비
+        </Button>
+        <Button role='button' tabIndex={tabIndex}>
+          게임 시작
+        </Button>
+      </LeftButtonList>
+
+      <RightButtonList>
+        <Link to={NamedRoutes.Lobby} tabIndex={tabIndex}>
+          <Button>방 나가기</Button>
+        </Link>
+      </RightButtonList>
+    </Layout>
+  )
+}
 
 const Layout = styled.div`
   overflow-x: scroll;
@@ -43,7 +54,7 @@ const LeftButtonList = ButtonList
 
 const RightButtonList = ButtonList
 
-const Item = styled.div`
+const Button = styled.div`
   cursor: pointer;
 
   width: min-content;

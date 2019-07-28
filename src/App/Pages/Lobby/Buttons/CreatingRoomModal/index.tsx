@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import styled from 'styled-components'
 
 import { Size } from '../../../../../constants'
 import { Modal, Form } from '../../../../Atomics'
@@ -11,7 +12,7 @@ export const CreatingRoomModal: FC<Props> = ({ close }) => (
   <Modal isClosableOverlay={true} close={close}>
     <Modal.Title>방 만들기</Modal.Title>
 
-    <Modal.Main style={{ width: Size.XS }}>
+    <ModalMain>
       <Form>
         <Form.Row>
           <Form.Label>방 제목</Form.Label>
@@ -38,7 +39,7 @@ export const CreatingRoomModal: FC<Props> = ({ close }) => (
           <Form.Numeric placeholder='90' postfix='초' maxLength={4} defaultValue={120} min={90} max={150} step={10} />
         </Form.Row>
       </Form>
-    </Modal.Main>
+    </ModalMain>
 
     <Modal.ButtonGroup>
       <Modal.Button onClick={close} style={{ color: '#f88' }}>
@@ -50,3 +51,13 @@ export const CreatingRoomModal: FC<Props> = ({ close }) => (
     </Modal.ButtonGroup>
   </Modal>
 )
+
+const ModalMain = styled(Modal.Main)`
+  & > div {
+    width: ${Size.XS}px;
+
+    @media (max-width: ${Size.MD}px) {
+      width: ${Size.XS - 72}px;
+    }
+  }
+`

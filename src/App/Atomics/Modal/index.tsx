@@ -5,6 +5,7 @@ import { KeyInfo } from 'key-info'
 
 import { useDispatch } from '../../Store'
 import { openModal, closeModal } from '../../Store/Modal'
+import { Size } from '../../../constants'
 
 {
   // body 안쪽에 ModalRoot 추가
@@ -22,7 +23,7 @@ interface Props extends Styleable {
   readonly children: ReactNode
 }
 
-export function Modal({ isClosableOverlay, className, close = () => {}, children }: Props) {
+export function Modal({ isClosableOverlay, className, style, close = () => {}, children }: Props) {
   const dispatch = useDispatch()
 
   const controlScroll = () => {
@@ -54,7 +55,7 @@ export function Modal({ isClosableOverlay, className, close = () => {}, children
   }
 
   const modal = (
-    <Layout className={className} onClick={onClick}>
+    <Layout className={className} style={style} onClick={onClick}>
       <div>
         <div onClick={event => event.stopPropagation()}>{children}</div>
       </div>
@@ -81,6 +82,10 @@ const Layout = styled.div`
   padding: 32px;
 
   background-color: hsl(0 0% 0% / 36%);
+
+  @media (max-width: ${Size.MD}px) {
+    padding: 16px;
+  }
 
   & > div {
     overflow-y: auto;
@@ -124,13 +129,21 @@ const Title: FC<TitleProps> = ({ children }) => (
 
 Modal.Title = Title
 
-Modal.Main = styled.div`
+const MainLayout = styled.div`
+  overflow-x: auto;
   width: 100%;
 
   margin: 0 auto;
-  padding: 32px;
 
   background-color: white;
+
+  & > div {
+    padding: 32px;
+
+    @media (max-width: ${Size.MD}px) {
+      padding: 24px;
+    }
+  }
 
   p {
     text-indent: 2ch;
@@ -145,6 +158,16 @@ Modal.Main = styled.div`
     margin-top: 1.5ch;
   }
 `
+
+interface MainProps extends Styleable {}
+
+const Main: FC<MainProps> = ({ className, style, children }) => (
+  <MainLayout className={className} style={style}>
+    <div>{children}</div>
+  </MainLayout>
+)
+
+Modal.Main = Main
 
 interface ButtonProps {
   readonly children: string

@@ -17,20 +17,15 @@ import { openModal, closeModal } from '../../Store/Modal'
 declare const ModalRoot: HTMLDivElement
 
 interface Props extends Styleable {
-  readonly isOpen: boolean
   readonly isClosableOverlay: boolean
   readonly close?: () => void
   readonly children: ReactNode
 }
 
-export function Modal({ isOpen, isClosableOverlay, className, close = () => {}, children }: Props) {
+export function Modal({ isClosableOverlay, className, close = () => {}, children }: Props) {
   const dispatch = useDispatch()
 
   const controlScroll = () => {
-    if (!isOpen) {
-      return
-    }
-
     const closeOnEscape = (event: KeyboardEvent) => {
       const keyinfo = KeyInfo.from(event)
       if (keyinfo.isEscape) {
@@ -50,11 +45,7 @@ export function Modal({ isOpen, isClosableOverlay, className, close = () => {}, 
       dispatch(closeModal())
     }
   }
-  useEffect(controlScroll, [isOpen])
-
-  if (!isOpen) {
-    return null
-  }
+  useEffect(controlScroll, [])
 
   const onClick = () => {
     if (isClosableOverlay) {
@@ -74,7 +65,7 @@ export function Modal({ isOpen, isClosableOverlay, className, close = () => {}, 
 }
 
 const Layout = styled.div`
-  overflow: scroll;
+  overflow: hidden;
   position: fixed;
   top: 0;
   right: 0;
@@ -92,32 +83,33 @@ const Layout = styled.div`
   background-color: hsl(0 0% 0% / 36%);
 
   & > div {
-    display: flex;
+    overflow-y: auto;
+    display: grid;
     justify-content: center;
-    align-items: center;
+    align-content: center;
 
     height: 100%;
 
     & > div {
-      position: relative;
-      overflow: hidden;
+      overflow-x: hidden;
 
-      background-color: hsl(0 0% 96%);
-      border-radius: 3px;
+      height: 100%;
+
+      background-color: white;
       box-shadow: 0 0 3px 1px hsl(0 0% 64%);
+      border-radius: 3px;
     }
   }
 `
 
 const TitleLayout = styled.div`
-  margin: 0 16px;
-  padding: 16px 0;
+  padding: 16px;
 
   text-align: center;
   text-transform: capitalize;
 
+  background-color: hsl(0 0% 96%);
   border-bottom: 1px solid hsl(0 16% 84%);
-  border-radius: 1ch;
 `
 
 interface TitleProps {
@@ -138,11 +130,13 @@ Modal.Main = styled.div`
   margin: 0 auto;
   padding: 32px;
 
+  background-color: white;
+
   p {
     text-indent: 2ch;
   }
 
-  p:first-child {
+  p:first-letter {
     text-transform: uppercase;
     font-weight: bolder;
   }

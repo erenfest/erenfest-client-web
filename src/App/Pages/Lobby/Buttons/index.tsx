@@ -1,23 +1,36 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 
 import { useSelector } from '../../../Store'
 import { Card } from '../../../Atomics'
+import { CreatingRoomModal } from './CreatingRoomModal'
+
+enum ModalKind {
+  None,
+  CreatingRoom
+}
 
 export const Buttons: FC = () => {
   const tabIndex = useSelector(store => store.Modal.tabIndex)
+  const [modalKind, setModalKind] = useState()
+
+  const openModal = (modalKind: ModalKind) => () => setModalKind(modalKind)
+  const closeModal = () => setModalKind(ModalKind.None)
+  const isOpenedModal = (currentModalKind: ModalKind) => modalKind === currentModalKind
 
   return (
     <>
       <Layout>
         <LeftButtonList>
-          <li tabIndex={tabIndex}>
-            <CardLayout>방 만들기</CardLayout>
+          <li tabIndex={tabIndex} onClick={openModal(ModalKind.CreatingRoom)}>
+            <Button>방 만들기</Button>
           </li>
         </LeftButtonList>
 
         <RightButtonList />
       </Layout>
+
+      {isOpenedModal(ModalKind.CreatingRoom) && <CreatingRoomModal close={closeModal} />}
     </>
   )
 }
@@ -45,6 +58,8 @@ const LeftButtonList = ButtonList
 
 const RightButtonList = ButtonList
 
-const CardLayout = styled(Card)`
+const Button = styled(Card)`
+  cursor: pointer;
+
   padding: 8px 16px;
 `

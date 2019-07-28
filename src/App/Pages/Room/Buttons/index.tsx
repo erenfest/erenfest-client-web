@@ -52,10 +52,10 @@ const Item = styled.div`
 
   white-space: nowrap;
   background-color: white;
-  border: 1px solid hsl(0 0% 84%);
+  border: 1px solid hsl(0 16% 84%);
   border-radius: 3px;
 
   &:hover {
-    box-shadow: 0 0 12px 0 hsl(0 0% 84%);
+    box-shadow: 0 0 12px 0 hsl(0 16% 84%);
   }
 `

@@ -26,7 +26,7 @@ const InputContainer = styled.div`
   grid-template-columns: 1fr 40px;
 
   background-color: white;
-  border: 1px solid hsl(0 0% 84%);
+  border: 1px solid hsl(0 16% 84%);
   border-radius: 3px;
 `
 
@@ -39,9 +39,10 @@ const Button = styled.button`
 
   background-color: hsl(210 100% 96%);
   border-radius: 3px;
-  box-shadow: 0 0 0 1px hsl(0 0% 84%);
+  box-shadow: 0 0 0 1px hsl(0 16% 84%);
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: hsl(210 100% 92%);
   }
 `

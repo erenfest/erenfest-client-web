@@ -2,31 +2,36 @@ import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { useSelector } from '../../../Store'
 import { RoomList } from '../types'
 
 interface Props {
   readonly items: RoomList
 }
 
-export const Rooms: FC<Props> = ({ items }) => (
-  <Layout>
-    <RoomContainer>
-      {items.map(({ id, imageUrl, title }) => (
-        <Room to={`/room/${id}`} key={id}>
-          <Left>
-            <h4>{imageUrl}</h4>
-          </Left>
+export const Rooms: FC<Props> = ({ items }) => {
+  const tabIndex = useSelector(store => store.Modal.tabIndex)
 
-          <Right>
-            <h4>
-              [{id}] {title}
-            </h4>
-          </Right>
-        </Room>
-      ))}
-    </RoomContainer>
-  </Layout>
-)
+  return (
+    <Layout>
+      <RoomContainer>
+        {items.map(({ id, imageUrl, title }) => (
+          <Room to={`/room/${id}`} tabIndex={tabIndex} key={id}>
+            <Left>
+              <h4>{imageUrl}</h4>
+            </Left>
+
+            <Right>
+              <h4>
+                [{id}] {title}
+              </h4>
+            </Right>
+          </Room>
+        ))}
+      </RoomContainer>
+    </Layout>
+  )
+}
 
 const Layout = styled.div`
   overflow-y: scroll;

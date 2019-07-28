@@ -1,17 +1,25 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-export const Buttons: FC = () => (
-  <Layout>
-    <LeftButtonList>
-      <Item>방 만들기</Item>
-    </LeftButtonList>
+import { useSelector } from '../../../Store'
 
-    <RightButtonList />
-  </Layout>
-)
+export const Buttons: FC = () => {
+  const tabIndex = useSelector(store => store.Modal.tabIndex)
 
-const Layout = styled.ul`
+  return (
+    <>
+      <Layout>
+        <LeftButtonList>
+          <Button tabIndex={tabIndex}>방 만들기</Button>
+        </LeftButtonList>
+
+        <RightButtonList />
+      </Layout>
+    </>
+  )
+}
+
+const Layout = styled.div`
   overflow-x: scroll;
 
   display: grid;
@@ -23,7 +31,7 @@ const Layout = styled.ul`
   padding: 16px;
 `
 
-const ButtonList = styled.div`
+const ButtonList = styled.ul`
   display: grid;
   grid-gap: 16px;
   grid-auto-columns: min-content;
@@ -34,7 +42,7 @@ const LeftButtonList = ButtonList
 
 const RightButtonList = ButtonList
 
-const Item = styled.div`
+const Button = styled.li`
   cursor: pointer;
 
   width: min-content;
@@ -43,7 +51,7 @@ const Item = styled.div`
 
   white-space: nowrap;
   background-color: white;
-  border: 1px solid hsl(0 0% 84%);
+  border: 1px solid hsl(0 16% 84%);
   border-radius: 3px;
 
   &:hover {

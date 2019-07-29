@@ -36,7 +36,7 @@ export const Buttons: FC = () => {
 }
 
 const Layout = styled.div`
-  overflow-x: scroll;
+  overflow-x: auto;
 
   display: grid;
   grid-gap: 16px;

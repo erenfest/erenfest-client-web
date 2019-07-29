@@ -98,8 +98,6 @@ const Layout = styled.div`
     & > div {
       overflow-x: hidden;
 
-      height: 100%;
-
       background-color: white;
       box-shadow: 0 0 3px 1px hsl(0 0% 64%);
       border-radius: 3px;

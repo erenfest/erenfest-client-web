@@ -54,7 +54,7 @@ const Layout = styled.div`
 `
 
 const ChatList = styled.ul`
-  overflow-y: scroll;
+  overflow-y: auto;
 `
 
 const Chat = styled.li`

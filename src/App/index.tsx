@@ -9,7 +9,7 @@ import { BaseTemplate } from './Templates'
 import { Pages } from './Pages'
 
 export const App: FC = () => (
-  <TranslationProvider host={config.translationHost} language='ko'>
+  <TranslationProvider host={config.i18nHost} language='ko'>
     <StoreProvider>
       <BaseTemplate>
         <BrowserRouter>

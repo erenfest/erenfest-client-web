@@ -1,5 +1,7 @@
-import { Config } from './types'
-import { config as productionConfig } from './production'
-import { config as developmentConfig } from './development'
+export const config = {
+  isProduction: process.env.NODE_ENV === 'production',
+  isDevelopment: process.env.NODE_ENV === 'development',
+  isLocal: process.env.REACT_APP_MODE === 'local',
 
-export const config: Config = process.env.NODE_ENV === 'production' ? productionConfig : developmentConfig
+  i18nHost: process.env.REACT_APP_I18N_HOST!
+}

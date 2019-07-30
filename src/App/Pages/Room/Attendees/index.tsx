@@ -42,7 +42,7 @@ export const Attendees: FC<Props> = ({ items }) => {
 }
 
 const Layout = styled.div`
-  overflow-y: scroll;
+  overflow-y: auto;
 
   height: 100%;
 `

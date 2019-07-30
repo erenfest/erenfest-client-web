@@ -75,7 +75,7 @@ const InputLayout = styled.div<InputLayoutProps>`
 
   padding: 8px;
 
-  background-color: hsl(0 0% 96%);
+  background-color: hsl(0 16% 96%);
   border: 1px solid hsl(0 16% 84%);
   border-radius: 3px;
 

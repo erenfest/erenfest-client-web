@@ -3,9 +3,9 @@ import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 import { KeyInfo } from 'key-info'
 
+import { Size } from '../../../constants'
 import { useDispatch } from '../../Store'
 import { openModal, closeModal } from '../../Store/Modal'
-import { Size } from '../../../constants'
 
 {
   // body 안쪽에 ModalRoot 추가
@@ -111,12 +111,12 @@ const TitleLayout = styled.div`
   text-align: center;
   text-transform: capitalize;
 
-  background-color: hsl(0 0% 96%);
+  background-color: hsl(0 16% 96%);
   border-bottom: 1px solid hsl(0 16% 84%);
 `
 
 interface TitleProps {
-  readonly children: string
+  readonly children: ReactNode
 }
 
 const Title: FC<TitleProps> = ({ children }) => (
@@ -168,7 +168,7 @@ const Main: FC<MainProps> = ({ className, style, children }) => (
 Modal.Main = Main
 
 interface ButtonProps {
-  readonly children: string
+  readonly children: ReactNode
 }
 
 const Button = styled.button<ButtonProps>`

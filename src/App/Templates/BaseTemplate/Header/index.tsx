@@ -1,19 +1,45 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'use-translation'
 
 import { Size, I18N } from '../../../../constants'
+import { useSelector } from '../../../Store'
+import { Card } from '../../../Atomics'
+import { LoginModal } from './LoginModal'
+
+enum ModalKind {
+  None,
+  Login
+}
 
 export const Header: FC = () => {
   const { t } = useTranslation()
   const serviceName = t(I18N.App_Index, 'ServiceName', 'Erenfest')
+  const title = useSelector(({ Header }) => Header.title)
+  const [modalKind, setModalKind] = useState(ModalKind.None)
+
+  const isOpenModal = (currentModalKind: ModalKind) => currentModalKind === modalKind
+  const openModal = (modalKind: ModalKind) => () => setModalKind(modalKind)
+  const closeModal = () => setModalKind(ModalKind.None)
 
   return (
-    <Layout>
-      <div>
-        <h2>{serviceName}</h2>
-      </div>
-    </Layout>
+    <>
+      <Layout>
+        <div>
+          <div>
+            <h2>{serviceName}</h2>
+          </div>
+
+          <div>{title}</div>
+
+          <div>
+            <Button onClick={openModal(ModalKind.Login)}>login</Button>
+          </div>
+        </div>
+      </Layout>
+
+      {isOpenModal(ModalKind.Login) && <LoginModal close={closeModal} />}
+    </>
   )
 }
 
@@ -33,6 +59,8 @@ const Layout = styled.div`
 
   & > div {
     display: grid;
+    grid-template-columns: 128px 1fr 128px;
+    justify-content: center;
     align-items: center;
 
     max-width: ${Size.MaxWidth}px;
@@ -41,4 +69,15 @@ const Layout = styled.div`
 
     margin: 0 auto;
   }
+`
+
+const Button = styled(Card)`
+  cursor: pointer;
+
+  width: min-content;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 8px 16px;
 `

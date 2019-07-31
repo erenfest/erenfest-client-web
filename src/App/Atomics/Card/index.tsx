@@ -2,11 +2,16 @@ import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 
 interface Props extends Styleable {
+  readonly onClick?: () => void
   readonly children: ReactNode
 }
 
-export function Card({ className, children }: Props) {
-  return <Layout className={className}>{children}</Layout>
+export function Card({ className, onClick, children }: Props) {
+  return (
+    <Layout className={className} onClick={onClick}>
+      {children}
+    </Layout>
+  )
 }
 
 const Layout = styled.div`

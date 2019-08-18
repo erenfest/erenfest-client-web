@@ -24,7 +24,7 @@ export const Header: FC = () => {
 
   return (
     <>
-      <Layout>
+      <Layout className='py-0 px-4'>
         <div>
           <div>
             <h2>{serviceName}</h2>
@@ -33,7 +33,9 @@ export const Header: FC = () => {
           <div>{title}</div>
 
           <div>
-            <Button onClick={openModal(ModalKind.Login)}>login</Button>
+            <Button className='py-2 px-4' onClick={openModal(ModalKind.Login)}>
+              login
+            </Button>
           </div>
         </div>
       </Layout>
@@ -50,8 +52,6 @@ const Layout = styled.div`
   left: 0;
 
   width: 100%;
-
-  padding: 0 16px;
 
   text-transform: capitalize;
   box-shadow: 0 0 0 1px hsl(0 16% 84%);
@@ -79,5 +79,8 @@ const Button = styled(Card)`
   justify-content: center;
   align-items: center;
 
-  padding: 8px 16px;
+  &:hover {
+    color: white;
+    background-color: hsl(0 16% 24%);
+  }
 `

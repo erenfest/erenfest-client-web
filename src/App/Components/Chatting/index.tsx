@@ -24,20 +24,20 @@ export const Chatting: FC<Props> = ({ items }) => {
   const tabIndex = useSelector(store => store.Modal.tabIndex)
 
   return (
-    <Layout>
+    <Layout className='rad-a'>
       <ChatList>
         {items.map(({ id, message, user }) => (
-          <Chat key={id}>
+          <li className='ma-2' key={id}>
             <b>{user.nickname}</b>
             <span>: </span>
             <span>{message}</span>
-          </Chat>
+          </li>
         ))}
       </ChatList>
 
       <InputContainer>
-        <InputText type='text' tabIndex={tabIndex} spellCheck={false} />
-        <Button tabIndex={tabIndex} />
+        <input className='pa-2' type='text' tabIndex={tabIndex} spellCheck={false} />
+        <Button className='rad-a' tabIndex={tabIndex} />
       </InputContainer>
     </Layout>
   )
@@ -49,31 +49,20 @@ const Layout = styled.div`
 
   width: 100%;
   height: calc(100vh - ${HEADER_HEIGHT}px - 16px * 5);
-
-  border-radius: 3px;
 `
 
 const ChatList = styled.ul`
   overflow-y: auto;
 `
 
-const Chat = styled.li`
-  margin: 8px;
-`
-
 const InputContainer = styled(Card)`
   grid-template-columns: 1fr 40px;
-`
-
-const InputText = styled.input`
-  padding: 8px;
 `
 
 const Button = styled.button`
   cursor: pointer;
 
   background-color: hsl(210 100% 96%);
-  border-radius: 3px;
   box-shadow: 0 0 0 1px hsl(0 16% 84%);
 
   &:hover,

@@ -16,7 +16,7 @@ export const Attendees: FC<Props> = ({ items }) => {
 
   return (
     <Layout>
-      <AttendeeContainer>
+      <AttendeeContainer className='pa-4'>
         {items.map(({ id, imageUrl, nickname }, index) => (
           <Link to='#' tabIndex={tabIndex} key={id}>
             <Attendee>
@@ -24,12 +24,12 @@ export const Attendees: FC<Props> = ({ items }) => {
                 <b>{imageUrl}</b>
               </Avatar>
 
-              <AttendeeInfo>
+              <Card.Right className='pa-2'>
                 <b>{nickname}</b>
-              </AttendeeInfo>
+              </Card.Right>
 
               <FireButton>
-                <Icon>
+                <Icon className='rad-a'>
                   <Ex />
                 </Icon>
               </FireButton>
@@ -51,8 +51,6 @@ const AttendeeContainer = styled.div`
   display: grid;
   grid-gap: 16px;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-
-  padding: 16px;
 `
 
 const Attendee = styled(Card)`
@@ -71,10 +69,6 @@ const Avatar = styled(Card.Left)`
   height: 96px;
 `
 
-const AttendeeInfo = styled(Card.Right)`
-  padding: 8px;
-`
-
 const FireButton = styled.div`
   position: absolute;
   top: 0;
@@ -84,8 +78,6 @@ const FireButton = styled.div`
 const Icon = styled.div`
   width: 24px;
   height: 24px;
-
-  border-radius: 3px;
 
   &:hover {
     background-color: red;

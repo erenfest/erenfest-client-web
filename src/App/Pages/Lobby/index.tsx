@@ -12,8 +12,8 @@ export const Lobby: FC = () => {
   const [state] = useLobby()
 
   return (
-    <Layout>
-      <div>
+    <div className='mt-8 pr-4'>
+      <Children className='my-0 mx-auto'>
         <div style={{ gridArea: 'buttons' }}>
           <Buttons />
         </div>
@@ -22,28 +22,21 @@ export const Lobby: FC = () => {
           <Rooms items={state.roomList} />
         </div>
 
-        <div style={{ gridArea: 'chatting', marginTop: '16px' }}>
+        <div className='mt-4' style={{ gridArea: 'chatting' }}>
           <Chatting items={state.chatting} />
         </div>
-      </div>
-    </Layout>
+      </Children>
+    </div>
   )
 }
 
-const Layout = styled.div`
-  margin-top: 32px;
-  padding-right: 16px;
+const Children = styled.div`
+  display: grid;
+  grid-template:
+    'buttons chatting' 72px
+    'rooms chatting' calc(100vh - ${HEADER_HEIGHT}px - 16px * 9)
+    / calc(100% - ${Size.XS}px) 1fr;
 
-  & > div {
-    display: grid;
-    grid-template:
-      'buttons chatting' 72px
-      'rooms chatting' calc(100vh - ${HEADER_HEIGHT}px - 16px * 9)
-      / calc(100% - ${Size.XS}px) 1fr;
-
-    max-width: ${Size.LG}px;
-    width: 100%;
-
-    margin: 0 auto;
-  }
+  max-width: ${Size.LG}px;
+  width: 100%;
 `

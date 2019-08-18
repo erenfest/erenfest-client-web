@@ -6,13 +6,11 @@ interface Props extends Styleable {
   readonly children: ReactNode
 }
 
-export function Card({ className, onClick, children }: Props) {
-  return (
-    <Layout className={className} onClick={onClick}>
-      {children}
-    </Layout>
-  )
-}
+export const Card = ({ className, onClick, children }: Props) => (
+  <Layout className={className} onClick={onClick}>
+    {children}
+  </Layout>
+)
 
 const Layout = styled.div`
   position: relative;

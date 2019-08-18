@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useTranslation } from 'use-translation'
 
-import { Size, I18N, NamedRoutes } from '../../../../constants'
+import { I18N, NamedRoutes } from '../../../../constants'
 
 export const Introduction: FC = () => {
   const { t } = useTranslation()
@@ -11,52 +11,38 @@ export const Introduction: FC = () => {
   const start = t(I18N.App_Index, 'Start')
 
   return (
-    <Layout>
-      <CatchPhrase>{catchPhrase}</CatchPhrase>
+    <Layout className='my-0 mx-auto align-center'>
+      <CatchPhrase className='text-weight-bold text-size-xl'>{catchPhrase}</CatchPhrase>
 
-      <StartButton to={NamedRoutes.Lobby} role='button'>
-        <h3>{start}</h3>
-      </StartButton>
+      <Link className='mt-8 mx-auto' to={NamedRoutes.Lobby} role='button'>
+        <Text className='text-size-sm my-0 mx-auto py-4 px-8 rad-a'>{start}</Text>
+      </Link>
     </Layout>
   )
 }
 
 const Layout = styled.div`
-  max-width: ${Size.MaxWidth}px;
-  width: 100%;
-
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 `
 
 const CatchPhrase = styled.h2`
   margin-top: 20vh;
 
   word-break: keep-all;
-  font-size: 32px;
   text-align: center;
 `
 
-const StartButton = styled(Link)`
-  width: 100%;
+const Text = styled.h3`
+  width: min-content;
 
-  margin-top: 32px;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  background-color: hsl(0 16% 24%);
+  box-shadow: 1px 1px 3px 1px hsl(0 0% 84%);
 
-  h3 {
-    width: min-content;
-
-    margin: 0 auto;
-    padding: 16px 32px;
-
-    color: white;
-    text-align: center;
-    font-size: 20px;
-    white-space: nowrap;
-    background-color: hsl(0 16% 24%);
-    border-radius: 3px;
-    box-shadow: 1px 1px 3px 1px hsl(0 0% 84%);
-
-    &:hover {
-      transform: translateY(1px);
-    }
+  &:hover {
+    transform: translateY(1px);
   }
 `

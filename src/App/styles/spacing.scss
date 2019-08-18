@@ -1,0 +1,50 @@
+@each $attribute in (padding, margin) {
+  $prefix: str-slice($attribute, 1, 1);
+
+  @each $index in (0, 1, 2, 4, 6, 8, 12, 16) {
+    $space: 4px * $index;
+
+    .#{$prefix}a-#{$index} {
+      #{$attribute}: $space;
+    }
+
+    .#{$prefix}x-#{$index} {
+      #{$attribute}-right: $space;
+      #{$attribute}-left: $space;
+    }
+
+    .#{$prefix}y-#{$index} {
+      #{$attribute}-top: $space;
+      #{$attribute}-bottom: $space;
+    }
+
+    .#{$prefix}t-#{$index} {
+      #{$attribute}-top: $space;
+    }
+
+    .#{$prefix}r-#{$index} {
+      #{$attribute}-right: $space;
+    }
+
+    .#{$prefix}b-#{$index} {
+      #{$attribute}-bottom: $space;
+    }
+
+    .#{$prefix}l-#{$index} {
+      #{$attribute}-left: $space;
+    }
+  }
+}
+
+.mx-auto {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.ml-auto {
+  margin-left: auto;
+}

@@ -15,7 +15,7 @@ export const Rooms: FC<Props> = ({ items }) => {
 
   return (
     <Layout>
-      <RoomContainer>
+      <RoomContainer className='pa-4'>
         {items.map(({ id, imageUrl, title }) => (
           <Link to={`/room/${id}`} replace={true} tabIndex={tabIndex} key={id}>
             <Room>
@@ -23,11 +23,11 @@ export const Rooms: FC<Props> = ({ items }) => {
                 <h4>{imageUrl}</h4>
               </Left>
 
-              <Right>
+              <Card.Right className='pa-2'>
                 <h4>
                   [{id}] {title}
                 </h4>
-              </Right>
+              </Card.Right>
             </Room>
           </Link>
         ))}
@@ -46,8 +46,6 @@ const RoomContainer = styled.div`
   display: grid;
   grid-gap: 16px;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-
-  padding: 16px;
 `
 
 const Room = styled(Card)`
@@ -60,8 +58,4 @@ const Left = styled(Card.Left)`
   display: grid;
   justify-content: center;
   align-items: center;
-`
-
-const Right = styled(Card.Right)`
-  padding: 8px;
 `

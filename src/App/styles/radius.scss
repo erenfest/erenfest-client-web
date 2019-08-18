@@ -1,0 +1,41 @@
+$radius: 3px;
+
+.rad-a {
+  border-radius: $radius;
+}
+
+.rad-t {
+  border-top-right-radius: $radius;
+  border-top-left-radius: $radius;
+}
+
+.rad-r {
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+.rad-b {
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+.rad-l {
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+.rad-tr {
+  border-top-right-radius: $radius;
+}
+
+.rad-br {
+  border-bottom-right-radius: $radius;
+}
+
+.rad-bl {
+  border-bottom-left-radius: $radius;
+}
+
+.rad-tl {
+  border-top-left-radius: $radius;
+}

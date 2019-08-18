@@ -20,10 +20,10 @@ export const Buttons: FC = () => {
 
   return (
     <>
-      <Layout>
+      <Layout className='pa-4'>
         <LeftButtonList>
           <li tabIndex={tabIndex} onClick={openModal(ModalKind.CreatingRoom)}>
-            <Button>방 만들기</Button>
+            <Button className='py-2 px-4'>방 만들기</Button>
           </li>
         </LeftButtonList>
 
@@ -43,8 +43,6 @@ const Layout = styled.div`
   grid-template-columns: 1fr min-content;
 
   height: 100%;
-
-  padding: 16px;
 `
 
 const ButtonList = styled.ul`
@@ -60,6 +58,4 @@ const RightButtonList = ButtonList
 
 const Button = styled(Card)`
   cursor: pointer;
-
-  padding: 8px 16px;
 `

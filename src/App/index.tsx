@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider as TranslationProvider } from 'use-translation'
 
-import './clearfix.css'
+import './styles/index.scss'
 import { config } from '../constants'
 import { StoreProvider } from './Store'
 import { BaseTemplate } from './Templates'

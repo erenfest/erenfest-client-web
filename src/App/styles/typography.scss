@@ -1,0 +1,55 @@
+[class*='text'] {
+  display: inline-block;
+}
+
+.text-size-xs {
+  font-size: 12px;
+}
+
+.text-size-sm {
+  font-size: 16px;
+}
+
+.text-size-md {
+  font-size: 24px;
+}
+
+.text-size-lg {
+  font-size: 32px;
+}
+
+.text-size-xl {
+  font-size: 48px;
+}
+
+.text-weight-light {
+  font-weight: lighter;
+}
+
+.text-weight-normal {
+  font-weight: normal;
+}
+
+.text-weight-bold {
+  font-weight: bolder;
+}
+
+@for $index from 1 through 9 {
+  $size: $index * 100;
+
+  .text-weight-#{$size} {
+    font-weight: $size;
+  }
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
